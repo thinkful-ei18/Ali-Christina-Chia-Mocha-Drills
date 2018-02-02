@@ -41,7 +41,33 @@ describe('FizzBuzz', function (){
     normalCases.forEach(function(num) {
       const answer = fizzBuzz(num.a);
       expect(answer).to.equal(num.expected);
-     });
-   });
+    });
+  });
+
+  it('If not a multiple of 15, 5, or 3, return number', function () {
+    const normalCases = [
+      { a: 1},
+      { a: 4},
+      { a: 7}
+    ];
+
+    normalCases.forEach(function (num) {
+      const answer = fizzBuzz(num.a);
+      expect(answer).to.equal(num.a);
+    });
+  });
+  it('If not a number return error', function () {
+    const edgeCases = [
+      { a: 'werf' },
+      { a: true },
+      { a: null }
+    ];
+    
+    edgeCases.forEach(function (num) {
+      expect(function () {
+        fizzBuzz(num);
+      }).to.throw(Error);
+    });
+  });
 
 });
